@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+.npm
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build outputs
+dist/
+build/
+
+# Backup files
+*~
+*.bak
+images-backup/
+
+# Documentation drafts (keeping only final versions)
+LIMPIEZA_VERCEL_GUIDE.md
+R2_SETUP_GUIDE.md
+R2_VERCEL_GUIDE.md
+README_NOTION_SYNC.md
+README_NOTION_SYNC_SIN_CLOUDINARY.md
+
+# Development scripts
+test-*.js
+debug-*.js
+*-test.js
+sync-*.js
+harvest-*.js
+clean-*.js
+cloudflare-*.json
+PUERTO 

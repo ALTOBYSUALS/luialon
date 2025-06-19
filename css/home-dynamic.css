@@ -1,0 +1,420 @@
+/* 🎨 SISTEMA DINÁMICO PARA PÁGINA PRINCIPAL 🎨 */
+/* Versión simplificada temporal para diagnóstico */
+
+/* Efectos hover básicos para showcase */
+.img__showcase_1,
+.img__showcase_2,
+.img__showcase_3,
+.img__showcase_4,
+.img__showcase_5,
+.img__showcase_6 {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.img__showcase_1:hover,
+.img__showcase_2:hover,
+.img__showcase_3:hover,
+.img__showcase_4:hover,
+.img__showcase_5:hover,
+.img__showcase_6:hover {
+  transform: scale(1.05);
+}
+
+/* Versiones tablet y mobile */
+.img__showcase_1_t,
+.img__showcase_2_t,
+.img__showcase_3_t,
+.img__showcase_4_t,
+.img__showcase_5_t,
+.img__showcase_6_t,
+.img__showcase_1_m,
+.img__showcase_2_m,
+.img__showcase_3_m,
+.img__showcase_4_m,
+.img__showcase_5_m,
+.img__showcase_6_m {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.img__showcase_1_t:hover,
+.img__showcase_2_t:hover,
+.img__showcase_3_t:hover,
+.img__showcase_4_t:hover,
+.img__showcase_5_t:hover,
+.img__showcase_6_t:hover,
+.img__showcase_1_m:hover,
+.img__showcase_2_m:hover,
+.img__showcase_3_m:hover,
+.img__showcase_4_m:hover,
+.img__showcase_5_m:hover,
+.img__showcase_6_m:hover {
+  transform: scale(1.05);
+}
+
+/* Modal dinámico para vista de producto */
+.product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.product-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.product-modal-content {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 
+    0 40px 100px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: scale(0.8) translateY(50px);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.product-modal.active .product-modal-content {
+  transform: scale(1) translateY(0);
+}
+
+/* Zona de imagen con zoom */
+.product-image-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.product-image-zoom {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+/* EFECTO ZOOM MAGNIFIER 🔍 */
+.zoom-lens {
+  position: absolute;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.5),
+    inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.zoom-lens.active {
+  opacity: 1;
+}
+
+.zoom-result {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 250px;
+  height: 250px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.zoom-result.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Info del producto */
+.product-info-modal {
+  flex: 1;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 10001;
+}
+
+.product-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.product-close::before,
+.product-close::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  border-radius: 1px;
+}
+
+.product-close::before {
+  transform: rotate(45deg);
+}
+
+.product-close::after {
+  transform: rotate(-45deg);
+}
+
+/* Título y descripción del producto */
+.product-title-modal {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.product-collection-modal {
+  font-size: 0.9em;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1em;
+}
+
+.product-description-modal {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 2em;
+}
+
+.product-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.product-detail-item {
+  padding: 1em;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.detail-label {
+  font-size: 0.8em;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3em;
+}
+
+.detail-value {
+  font-weight: 600;
+  color: #1e1e1e;
+}
+
+.product-price-modal {
+  font-size: 2em;
+  font-weight: 700;
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1em;
+}
+
+/* Botón de compra mejorado */
+.buy-now-btn {
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  padding: 1.2em 2em;
+  border-radius: 12px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 25px rgba(102, 126, 234, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 15px 35px rgba(102, 126, 234, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* SCROLL HORIZONTAL DE PRODUCTOS RELACIONADOS 🎭 */
+.related-products-section {
+  margin-top: 2em;
+  padding: 2em 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.related-products-title {
+  font-size: 1.3em;
+  color: #fff;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.related-products-scroll {
+  display: flex;
+  gap: 1em;
+  overflow-x: auto;
+  padding: 1em 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.related-products-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.related-product-item {
+  min-width: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.related-product-item:hover {
+  transform: translateY(-5px) scale(1.05);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.related-product-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.related-product-info {
+  padding: 1em;
+  text-align: center;
+}
+
+.related-product-title {
+  font-size: 0.9em;
+  color: #fff;
+  margin-bottom: 0.5em;
+}
+
+.related-product-price {
+  font-size: 0.8em;
+  color: #ccc;
+  font-weight: 600;
+}
+
+/* Indicador de carga */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 1.2em;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1em;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-modal-content {
+    flex-direction: column;
+    width: 95%;
+    height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .product-image-container {
+    height: 300px;
+  }
+  
+  .zoom-result {
+    width: 150px;
+    height: 150px;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .product-info-modal {
+    padding: 2em;
+  }
+  
+  .product-details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .related-products-scroll {
+    padding: 1em;
+    gap: 0.5em;
+  }
+  
+  .related-product-item {
+    min-width: 150px;
+  }
+} 

@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f9f9f9;
+  background: linear-gradient(135deg, #e3e3e3 0%, #f0f0f0 100%) !important;
+  padding: 0;
 }
 
 .div__content_store {
@@ -21,117 +22,662 @@
 .div__products_grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2em;
+  gap: 2.5em;
   margin-top: 2em;
+  perspective: 1000px; /* Para efectos 3D */
 }
 
 .product-card {
-  background-color: #ffffff;
-  border-radius: 8px;
+  background: #e8e8e8;
+  border-radius: 25px;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Efecto neumórfico básico */
+  box-shadow: 
+    15px 15px 30px #d1d1d1,
+    -15px -15px 30px #ffffff;
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* Efecto hundido al hover */
+  box-shadow: 
+    inset 15px 15px 30px #d1d1d1,
+    inset -15px -15px 30px #ffffff;
+  transform: scale(0.98);
+}
+
+/* Contenedor de imagen neumórfico */
+.product-image-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  background: #e8e8e8;
+  
+  /* Marco hundido para la imagen */
+  box-shadow: 
+    inset 8px 8px 16px #d1d1d1,
+    inset -8px -8px 16px #ffffff;
+  padding: 15px;
 }
 
 .product-image {
   width: 100%;
-  height: 300px;
+  height: 280px;
   object-fit: cover;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 
+    5px 5px 10px #d1d1d1,
+    -5px -5px 10px #ffffff;
 }
 
+.product-card:hover .product-image {
+  transform: scale(1.05);
+  box-shadow: 
+    8px 8px 16px #d1d1d1,
+    -8px -8px 16px #ffffff;
+}
+
+/* Información del producto */
 .product-info {
-  padding: 1.5em;
-}
-
-.product-title-link {
-  text-decoration: none;
-  color: #1e1e1e;
-  transition: color 0.3s ease;
-}
-
-.product-title-link:hover {
-  color: #555;
-}
-
-.product-image-link {
-  display: block;
-  overflow: hidden;
-  border-radius: 8px 8px 0 0;
+  padding: 20px 0;
 }
 
 .product-title {
-  font-size: 1.2em;
-  font-weight: 600;
-  margin-bottom: 0.5em;
-  color: #1e1e1e;
-}
-
-.product-description {
-  font-size: 0.9em;
-  color: #4a4a4a;
-  margin-bottom: 1em;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 12px;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
 }
 
 .product-collection {
-  font-size: 0.8em;
+  font-size: 0.9rem;
   color: #888;
-  margin-bottom: 0.75em;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
 }
 
-.product-price {
-  font-size: 1.3em;
-  font-weight: 700;
-  color: #1e1e1e;
-  margin-bottom: 1em;
+.product-description {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
 }
 
 .product-dimensions {
-  font-size: 0.85em;
-  color: #777;
-  margin-bottom: 1em;
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 20px;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
 }
 
+/* Precio neumórfico */
+.product-price {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 25px;
+  text-align: center;
+  background: #e8e8e8;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 
+    inset 5px 5px 10px #d1d1d1,
+    inset -5px -5px 10px #ffffff;
+  text-shadow: 
+    2px 2px 4px #d1d1d1,
+    -2px -2px 4px #ffffff;
+}
+
+/* Botón neumórfico */
 .add-to-cart-btn {
-  background-color: #1e1e1e;
-  color: #ffffff;
-  border: none;
-  padding: 0.8em 1.5em;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9em;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
   width: 100%;
+  padding: 18px;
+  background: #e8e8e8;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  /* Efecto elevado */
+  box-shadow: 
+    8px 8px 16px #d1d1d1,
+    -8px -8px 16px #ffffff;
+  
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #333333;
+  /* Efecto presionado */
+  box-shadow: 
+    inset 8px 8px 16px #d1d1d1,
+    inset -8px -8px 16px #ffffff;
+  transform: scale(0.98);
 }
 
-/* Estilos responsivos */
-@media screen and (max-width: 768px) {
-  .div__content_store {
-    padding: 2em;
+.add-to-cart-btn:active {
+  transform: scale(0.95);
+}
+
+/* Elementos decorativos neumórficos */
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #e8e8e8;
+  border-radius: 50%;
+  box-shadow: 
+    inset 5px 5px 10px #d1d1d1,
+    inset -5px -5px 10px #ffffff;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover::before {
+  opacity: 1;
+  box-shadow: 
+    5px 5px 10px #d1d1d1,
+    -5px -5px 10px #ffffff;
+}
+
+/* Badge de disponibilidad neumórfico */
+.availability-badge {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  padding: 8px 16px;
+  background: #e8e8e8;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+  box-shadow: 
+    5px 5px 10px #d1d1d1,
+    -5px -5px 10px #ffffff;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
+}
+
+.availability-badge.available {
+  color: #4a7c59;
+}
+
+.availability-badge.limited {
+  color: #b7950b;
+}
+
+/* Efectos de loading neumórficos */
+.loading-card {
+  background: #e8e8e8;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 
+    inset 15px 15px 30px #d1d1d1,
+    inset -15px -15px 30px #ffffff;
+  animation: neumorph-pulse 2s ease-in-out infinite;
+}
+
+@keyframes neumorph-pulse {
+  0%, 100% {
+    box-shadow: 
+      inset 15px 15px 30px #d1d1d1,
+      inset -15px -15px 30px #ffffff;
+  }
+  50% {
+    box-shadow: 
+      inset 20px 20px 40px #d1d1d1,
+      inset -20px -20px 40px #ffffff;
+  }
+}
+
+/* Responsive neumórfico */
+@media (max-width: 768px) {
+  .store-container {
+    margin: 20px;
+    padding: 40px 25px;
+    border-radius: 20px;
+    box-shadow: 
+      inset 10px 10px 20px #d1d1d1,
+      inset -10px -10px 20px #ffffff;
   }
   
-  .div__products_grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .div__products_grid {
+  .products-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
   
-  .div__content_store {
-    padding: 1.5em;
+  .product-card {
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 
+      10px 10px 20px #d1d1d1,
+      -10px -10px 20px #ffffff;
   }
+  
+  .store-title {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .store-container {
+    margin: 10px;
+    padding: 30px 20px;
+  }
+  
+  .product-card {
+    padding: 20px;
+  }
+  
+  .store-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* ===== DISEÑO NEUMÓRFICO EXPERIMENTAL ===== */
+
+/* Fondo principal neumórfico */
+.wrp_store {
+  background: linear-gradient(135deg, #e3e3e3 0%, #f0f0f0 100%);
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* Contenedor principal con efecto hundido */
+.store-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  background: #e8e8e8;
+  border-radius: 30px;
+  box-shadow: 
+    inset 20px 20px 40px #d1d1d1,
+    inset -20px -20px 40px #ffffff;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* Título neumórfico */
+.store-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 60px;
+  color: #666;
+  text-shadow: 
+    2px 2px 4px #d1d1d1,
+    -2px -2px 4px #ffffff;
+  letter-spacing: 8px;
+}
+
+/* Grid de productos neumórfico - OPTIMIZADO PARA DESKTOP */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+  perspective: 1000px;
+}
+
+/* Ajustes específicos para desktop */
+@media (min-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 45px;
+  }
+}
+
+/* Cartas de producto neumórficas */
+.product-card {
+  background: #e8e8e8;
+  border-radius: 25px;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  
+  /* Efecto neumórfico básico */
+  box-shadow: 
+    15px 15px 30px #d1d1d1,
+    -15px -15px 30px #ffffff;
+}
+
+.product-card:hover {
+  /* Efecto hundido al hover */
+  box-shadow: 
+    inset 15px 15px 30px #d1d1d1,
+    inset -15px -15px 30px #ffffff;
+  transform: scale(0.98);
+}
+
+/* Contenedor de imagen neumórfico */
+.product-image-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  background: #e8e8e8;
+  
+  /* Marco hundido para la imagen */
+  box-shadow: 
+    inset 8px 8px 16px #d1d1d1,
+    inset -8px -8px 16px #ffffff;
+  padding: 15px;
+}
+
+.product-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 
+    5px 5px 10px #d1d1d1,
+    -5px -5px 10px #ffffff;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+  box-shadow: 
+    8px 8px 16px #d1d1d1,
+    -8px -8px 16px #ffffff;
+}
+
+/* Información del producto */
+.product-info {
+  padding: 20px 0;
+}
+
+.product-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 12px;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
+}
+
+.product-collection {
+  font-size: 0.9rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
+}
+
+.product-description {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
+}
+
+.product-dimensions {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 20px;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
+}
+
+/* Precio neumórfico */
+.product-price {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 25px;
+  text-align: center;
+  background: #e8e8e8;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 
+    inset 5px 5px 10px #d1d1d1,
+    inset -5px -5px 10px #ffffff;
+  text-shadow: 
+    2px 2px 4px #d1d1d1,
+    -2px -2px 4px #ffffff;
+}
+
+/* Botón neumórfico */
+.add-to-cart-btn {
+  width: 100%;
+  padding: 18px;
+  background: #e8e8e8;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  /* Efecto elevado */
+  box-shadow: 
+    8px 8px 16px #d1d1d1,
+    -8px -8px 16px #ffffff;
+  
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
+}
+
+.add-to-cart-btn:hover {
+  /* Efecto presionado */
+  box-shadow: 
+    inset 8px 8px 16px #d1d1d1,
+    inset -8px -8px 16px #ffffff;
+  transform: scale(0.98);
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.95);
+}
+
+/* Badge de disponibilidad neumórfico */
+.availability-badge {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  padding: 8px 16px;
+  background: #e8e8e8;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+  box-shadow: 
+    5px 5px 10px #d1d1d1,
+    -5px -5px 10px #ffffff;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
+  z-index: 2;
+}
+
+.availability-badge.available {
+  color: #4a7c59;
+}
+
+.availability-badge.limited {
+  color: #b7950b;
+}
+
+/* Elementos decorativos neumórficos */
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #e8e8e8;
+  border-radius: 50%;
+  box-shadow: 
+    inset 5px 5px 10px #d1d1d1,
+    inset -5px -5px 10px #ffffff;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.product-card:hover::before {
+  opacity: 1;
+  box-shadow: 
+    5px 5px 10px #d1d1d1,
+    -5px -5px 10px #ffffff;
+}
+
+/* Efectos de loading neumórficos */
+.loading-card {
+  background: #e8e8e8;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 
+    inset 15px 15px 30px #d1d1d1,
+    inset -15px -15px 30px #ffffff;
+  animation: neumorph-pulse 2s ease-in-out infinite;
+}
+
+@keyframes neumorph-pulse {
+  0%, 100% {
+    box-shadow: 
+      inset 15px 15px 30px #d1d1d1,
+      inset -15px -15px 30px #ffffff;
+  }
+  50% {
+    box-shadow: 
+      inset 20px 20px 40px #d1d1d1,
+      inset -20px -20px 40px #ffffff;
+  }
+}
+
+/* ===== RESPONSIVE NEUMÓRFICO ===== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .store-container {
+    margin: 20px;
+    padding: 40px 25px;
+    border-radius: 20px;
+    box-shadow: 
+      inset 10px 10px 20px #d1d1d1,
+      inset -10px -10px 20px #ffffff;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .product-card {
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 
+      10px 10px 20px #d1d1d1,
+      -10px -10px 20px #ffffff;
+  }
+  
+  .store-title {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .store-container {
+    margin: 10px;
+    padding: 30px 20px;
+  }
+  
+  .product-card {
+    padding: 20px;
+  }
+  
+  .store-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  
+  .product-image {
+    height: 220px;
+  }
+}
+
+/* SOLUCIÓN: Ocultar elementos GALLERY en el store */
+.wrp_store #gallery,
+.wrp_store [id*="gallery"],
+.wrp_store .div__nav_btn:has([id*="gallery"]),
+.wrp_store nav:has([id*="gallery"]),
+.wrp_store *[class*="gallery"]:not(.footer-gallery):not(.gallery-item) {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Asegurar que el fondo del store sea correcto */
+.wrp_store,
+.wrp_store .body,
+.wrp_store body {
+  background: linear-gradient(135deg, #e3e3e3 0%, #f0f0f0 100%) !important;
+  background-color: #e8e8e8 !important;
+}
+
+/* Ocultar específicamente elementos con texto GALLERY */
+.wrp_store *:contains("GALLERY") {
+  display: none !important;
+}
+
+/* Permitir que el navbar neumórfico se aplique correctamente */
+.wrp_store .div__nav #gallery {
+  display: none !important;
+}
+
+/* Asegurar que solo se muestren los elementos correctos del nav */
+.wrp_store .div__nav > :not(#about):not(#home):not(#store):not(#cart) {
+  display: none !important;
 } 

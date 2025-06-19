@@ -1,0 +1,21 @@
+{
+  "name": "luialon-notion-sync",
+  "version": "1.0.0",
+  "description": "Script para sincronizar productos de luialon.shop con Notion",
+  "main": "sync-to-notion.js",
+  "scripts": {
+    "start": "node sync-to-notion.js",
+    "start:sin-cloudinary": "node sync-to-notion-sin-cloudinary.js",
+    "dev": "http-server . -p 3000",
+    "harvest": "node harvest-cloudflare-fruits.js",
+    "test-r2": "node test-r2-connection.js",
+    "sync-r2": "node sync-r2-urls.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.9",
+    "aws-sdk": "^2.1692.0",
+    "cloudinary": "^1.40.0",
+    "dotenv": "^16.3.1",
+    "fs-extra": "^11.3.0"
+  }
+}

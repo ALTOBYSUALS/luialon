@@ -1,0 +1,220 @@
+/* 🎨 NAVBAR NEUMÓRFICO CONSISTENTE 🎨 */
+/* Aplicando el mismo diseño neumórfico de las cartas del store a la navbar */
+
+/* Contenedor principal de la navbar */
+.div__nav {
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 2.5em !important;
+  display: flex !important;
+  
+  /* Fondo neumórfico igual al store */
+  background: linear-gradient(135deg, #e3e3e3 0%, #f0f0f0 100%) !important;
+  padding: 20px 40px !important;
+  border-radius: 25px !important;
+  margin: 2.5em auto !important;
+  max-width: 600px !important;
+  width: auto !important;
+  
+  /* Sombra neumórfica elevada */
+  box-shadow: 
+    15px 15px 30px #d1d1d1,
+    -15px -15px 30px #ffffff !important;
+  
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Botones de navegación neumórficos */
+.div__nav_btn {
+  text-align: center !important;
+  cursor: pointer !important;
+  align-self: center !important;
+  width: auto !important;
+  min-width: 100px !important;
+  height: auto !important;
+  padding: 12px 20px !important;
+  margin: 0 8px !important;
+  display: block !important;
+  
+  /* Diseño neumórfico para cada botón */
+  background: #e8e8e8 !important;
+  border-radius: 15px !important;
+  transition: all 0.3s ease !important;
+  
+  /* Efecto elevado por defecto */
+  box-shadow: 
+    8px 8px 16px #d1d1d1,
+    -8px -8px 16px #ffffff !important;
+}
+
+/* Hover en botones de navegación */
+.div__nav_btn:hover {
+  /* Efecto hundido al hover */
+  box-shadow: 
+    inset 8px 8px 16px #d1d1d1,
+    inset -8px -8px 16px #ffffff;
+  transform: scale(0.98);
+  
+  /* Fondo más oscuro para contraste */
+  background: #dcdcdc;
+}
+
+/* Estado activo/clickeado */
+.div__nav_btn.is--clicked {
+  cursor: pointer;
+  background: #dcdcdc;
+  
+  /* Efecto hundido permanente para estado activo */
+  box-shadow: 
+    inset 12px 12px 24px #d1d1d1,
+    inset -12px -12px 24px #ffffff;
+  transform: scale(0.96);
+}
+
+/* Texto de navegación neumórfico */
+.p1__nav {
+  color: #4a4a4a;
+  text-align: center;
+  margin-bottom: 0;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  display: block;
+  
+  /* Sombra de texto neumórfica */
+  text-shadow: 
+    2px 2px 4px #d1d1d1,
+    -2px -2px 4px #ffffff;
+  
+  transition: all 0.3s ease;
+}
+
+/* Texto en hover - mayor contraste */
+.div__nav_btn:hover .p1__nav {
+  color: #2a2a2a;
+  text-shadow: 
+    3px 3px 6px #d1d1d1,
+    -3px -3px 6px #ffffff;
+}
+
+/* Texto en estado activo */
+.div__nav_btn.is--clicked .p1__nav {
+  color: #1a1a1a;
+  text-shadow: 
+    1px 1px 2px #ffffff,
+    -1px -1px 2px #d1d1d1;
+}
+
+/* Texto centrado y derecho */
+.p1__nav.is--centered {
+  text-align: center;
+}
+
+.p1__nav.is--right {
+  text-align: center; /* Mantener centrado en navbar */
+}
+
+/* Responsivo - Tablet */
+@media screen and (max-width: 991px) {
+  .div__nav {
+    margin: 2em auto;
+    padding: 15px 30px;
+    max-width: 500px;
+  }
+  
+  .div__nav_btn {
+    min-width: 80px;
+    padding: 10px 15px;
+    margin: 0 6px;
+  }
+  
+  .p1__nav {
+    font-size: 15px;
+  }
+}
+
+/* Responsivo - Móvil */
+@media screen and (max-width: 479px) {
+  .div__nav {
+    margin: 1.5em auto !important;
+    padding: 12px 20px !important;
+    max-width: 90% !important;
+    width: 91vw !important;
+    border-radius: 20px !important;
+    
+    /* Sombras más sutiles en móvil */
+    box-shadow: 
+      10px 10px 20px #d1d1d1,
+      -10px -10px 20px #ffffff !important;
+  }
+  
+  .div__nav_btn {
+    min-width: 60px !important;
+    padding: 8px 12px !important;
+    margin: 0 4px !important;
+    border-radius: 12px !important;
+    width: auto !important;
+    height: auto !important;
+    
+    /* Sombras más sutiles */
+    box-shadow: 
+      6px 6px 12px #d1d1d1,
+      -6px -6px 12px #ffffff !important;
+  }
+  
+  .div__nav_btn:hover {
+    box-shadow: 
+      inset 6px 6px 12px #d1d1d1,
+      inset -6px -6px 12px #ffffff;
+  }
+  
+  .div__nav_btn.is--clicked {
+    box-shadow: 
+      inset 8px 8px 16px #d1d1d1,
+      inset -8px -8px 16px #ffffff;
+  }
+  
+  .p1__nav {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+/* Animación suave para transiciones */
+@keyframes navbar-neumorph-hover {
+  0% {
+    box-shadow: 
+      8px 8px 16px #d1d1d1,
+      -8px -8px 16px #ffffff;
+  }
+  100% {
+    box-shadow: 
+      inset 8px 8px 16px #d1d1d1,
+      inset -8px -8px 16px #ffffff;
+  }
+}
+
+/* Efecto especial para el carrito */
+.div__nav_btn #cart .cart-icon {
+  filter: none;
+  transition: all 0.3s ease;
+}
+
+.div__nav_btn:hover #cart .cart-icon {
+  transform: scale(1.1);
+}
+
+/* Consistencia con el fondo del body */
+body {
+  background: linear-gradient(135deg, #e3e3e3 0%, #f0f0f0 100%) !important;
+}
+
+/* Override para páginas específicas */
+.wrp_store .div__nav,
+.wrp_homepage .div__nav,
+.wrp_gallery_collection .div__nav {
+  /* Asegurar que todas las páginas usen el mismo estilo */
+  background: linear-gradient(135deg, #e3e3e3 0%, #f0f0f0 100%) !important;
+} 

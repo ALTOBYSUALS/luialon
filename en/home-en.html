@@ -17,6 +17,7 @@
   <link href="../css/normalize.css" rel="stylesheet" type="text/css">
   <link href="../css/webflow.css" rel="stylesheet" type="text/css">
   <link href="../css/luialon.webflow.css" rel="stylesheet" type="text/css">
+  <link href="../css/navbar-neumorph.css" rel="stylesheet" type="text/css">
   <style>@media (min-width:992px) {html.w-mod-js:not(.w-mod-ix) [data-w-id="a35a6b79-f012-352e-7c0d-000bf67d821b"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="0fc3040d-4c06-de73-91cd-d01bd20cd8a1"] {color:rgb(30,30,30);}html.w-mod-js:not(.w-mod-ix) [data-w-id="ffe457f1-d944-4200-3113-3bfe78e5fadd"] {opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="eea4cb3e-c4c5-338a-a755-f2bbd2643389"] {color:rgb(30,30,30);}}</style>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
@@ -70,9 +71,7 @@ body {
             <nav id="home" class="div__nav_btn">
               <p id="p1home" class="p1__nav is--centered">HOME</p>
             </nav>
-            <nav id="gallery" class="div__nav_btn">
-              <p id="p1gallery" class="p1__nav is--right">GALLERY</p>
-            </nav>
+
           </div>
         </div>
         <div class="div__lang">
@@ -282,9 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('home').addEventListener('click', function () {
     animatePageTransition('-0vw', 'home');
   });
-  document.getElementById('gallery').addEventListener('click', function () {
-    animatePageTransition('-100vw', 'gallery');
-  });
+
   // Retrieve the animation position from URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const clickedBlock = urlParams.get('block');
@@ -296,9 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
     case 'home':
       animatePageTransition('-0vw', 'home');
       break;
-    case 'gallery':
-      animatePageTransition('-100vw', 'gallery');
-      break;
+
     default:
       // Default animation position if no or unknown block is specified
       animatePageTransition('0vw');

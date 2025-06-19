@@ -1187,7 +1187,7 @@ h1 {
   .div__home_pc {
     margin-left: auto;
     margin-right: auto;
-    display: none;
+    display: block;
   }
 
   .div__lang {
@@ -1452,7 +1452,7 @@ h1 {
     width: 91vw;
     height: 80vh;
     margin-top: 2vh;
-    display: none;
+    display: block;
   }
 
   .div__footer {
