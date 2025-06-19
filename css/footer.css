@@ -200,7 +200,7 @@
   width: 200px;
   height: 200px;
   background-color: #33ccff;
-  bottom: -100px;
+  bottom: 0px;
   left: 10%;
   opacity: 0.08;
 }
