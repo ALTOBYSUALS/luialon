@@ -1,0 +1,178 @@
+/* 🎨 NAVBAR SIMPLIFICADO Y ELEGANTE 🎨 */
+/* Versión limpia sin neumorfismo pero con funcionalidades conservadas */
+
+/* Contenedor principal de la navbar */
+.div__nav {
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 2.5em !important;
+  display: flex !important;
+  
+  /* Fondo limpio y elegante */
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  padding: 15px 30px !important;
+  border-radius: 12px !important;
+  margin: 2.5em auto !important;
+  max-width: 600px !important;
+  width: auto !important;
+  
+  /* Sombra sutil y elegante */
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 1px 4px rgba(0, 0, 0, 0.05) !important;
+  
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.div__nav:hover {
+  box-shadow: 
+    0 6px 30px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Botones de navegación limpios */
+.div__nav_btn {
+  text-align: center !important;
+  cursor: pointer !important;
+  align-self: center !important;
+  width: auto !important;
+  min-width: 100px !important;
+  height: auto !important;
+  padding: 10px 18px !important;
+  margin: 0 6px !important;
+  display: block !important;
+  
+  /* Diseño limpio y moderno */
+  background: transparent !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+/* Hover en botones de navegación */
+.div__nav_btn:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Estado activo/clickeado */
+.div__nav_btn.is--clicked {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+.div__nav_btn.is--clicked .p1__nav {
+  color: white !important;
+  text-shadow: none !important;
+}
+
+/* Texto de navegación elegante */
+.p1__nav {
+  color: #333 !important;
+  text-align: center !important;
+  margin-bottom: 0 !important;
+  font-family: Inter, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 20px !important;
+  display: block !important;
+  
+  transition: all 0.3s ease !important;
+}
+
+/* Texto en hover */
+.div__nav_btn:hover .p1__nav {
+  color: #1a1a1a !important;
+  font-weight: 600 !important;
+}
+
+/* Texto centrado y derecho */
+.p1__nav.is--centered {
+  text-align: center !important;
+}
+
+.p1__nav.is--right {
+  text-align: center !important;
+}
+
+/* Estilo especial para el carrito */
+.div__nav_btn #cart .cart-icon {
+  filter: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.div__nav_btn:hover #cart .cart-icon {
+  transform: scale(1.05) !important;
+}
+
+.div__nav_btn.is--clicked #cart .cart-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Responsivo - Tablet */
+@media screen and (max-width: 991px) {
+  .div__nav {
+    margin: 2em auto !important;
+    padding: 12px 25px !important;
+    max-width: 500px !important;
+  }
+  
+  .div__nav_btn {
+    min-width: 80px !important;
+    padding: 8px 15px !important;
+    margin: 0 4px !important;
+  }
+  
+  .p1__nav {
+    font-size: 14px !important;
+  }
+}
+
+/* Responsivo - Móvil */
+@media screen and (max-width: 479px) {
+  .div__nav {
+    margin: 1.5em auto !important;
+    padding: 10px 15px !important;
+    max-width: 90% !important;
+    width: 91vw !important;
+    border-radius: 10px !important;
+  }
+  
+  .div__nav_btn {
+    min-width: 60px !important;
+    padding: 6px 12px !important;
+    margin: 0 3px !important;
+    border-radius: 6px !important;
+  }
+  
+  .p1__nav {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+  }
+}
+
+/* Fondo del body simplificado */
+body {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+}
+
+/* Override para páginas específicas - fondo limpio */
+.wrp_store,
+.wrp_homepage,
+.wrp_gallery_collection {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+}
+
+/* Asegurar consistencia en todas las páginas */
+.wrp_store .div__nav,
+.wrp_homepage .div__nav,
+.wrp_gallery_collection .div__nav {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+} 
