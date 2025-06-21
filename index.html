@@ -217,113 +217,14 @@ body {
   <script src="js/home-dynamic.js" type="text/javascript"></script>
   <script src="debug-showcase.js" type="text/javascript"></script>
   <script>
-// add/remove class for showcase images on PC
-$( document ).ready(function() {
-    $( ".img__showcase_1" ).hover(
-        function() {
-          $( this ).css('zIndex', '2');
-        }, function() {
-          $( this ).css('zIndex', '1');
-        }
-      );
-      $( ".img__showcase_2" ).hover(
-        function() {
-          $( this ).css('zIndex', '2');
-        }, function() {
-          $( this ).css('zIndex', '1');
-        }
-      );
-      $( ".img__showcase_3" ).hover(
-        function() {
-          $( this ).css('zIndex', '2');
-        }, function() {
-          $( this ).css('zIndex', '1');
-        }
-      );
-      $( ".img__showcase_4" ).hover(
-        function() {
-          $( this ).css('zIndex', '2');
-        }, function() {
-          $( this ).css('zIndex', '1');
-        }
-      );
-      $( ".img__showcase_5" ).hover(
-        function() {
-          $( this ).css('zIndex', '2');
-        }, function() {
-          $( this ).css('zIndex', '1');
-        }
-      );
-      $( ".img__showcase_6" ).hover(
-        function() {
-          $( this ).css('zIndex', '2');
-        }, function() {
-          $( this ).css('zIndex', '1');
-        }
-      );
-});
-// add/remove class for showcase images on tablet
-$(document).ready(function () {
-    let zIndexState = 1; // Initial zIndex state
-    $(".img__showcase_1_t").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_2_t").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_3_t").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_4_t").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_5_t").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_6_t").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-});
-// add/remove class for showcase images on mobile
-$(document).ready(function () {
-    let zIndexState = 1; // Initial zIndex state
-    $(".img__showcase_1_m").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_2_m").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_3_m").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_4_m").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_5_m").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-    $(".img__showcase_6_m").on('click', function () {
-        zIndexState = (zIndexState === 1) ? 2 : 1;
-        $(this).css('zIndex', zIndexState);
-    });
-});
 document.addEventListener('DOMContentLoaded', () => {
   let currentClickedDivId = null; // Variable to store the currently clicked div ID
+  
   // Function to move the wrapper to a specific position and animate color changes
   function animatePageTransition(xPosition, clickedDivId) {
     // Create a timeline for simultaneous animations
     const timeline = gsap.timeline();
+    
     // If a different element was previously clicked, revert its animation
     if (currentClickedDivId && currentClickedDivId !== clickedDivId) {
       // Revert color changes for the previously clicked div block
@@ -337,50 +238,94 @@ document.addEventListener('DOMContentLoaded', () => {
         color: '#1e1e1e', // Revert to the original text color
       }, 0);
     }
+    
     // Add animation for moving the wrapper
     timeline.to('.div__wrappers', {
       duration: 1,
       x: xPosition,
     }, 0);
+    
     // Add animation for changing color of the clicked div block
     timeline.to(`#${clickedDivId}`, {
       duration: 1,
       backgroundColor: '#1e1e1e',
     }, 0);
+    
     // Add animation for changing text color of the corresponding paragraph
     timeline.to(`#p1${clickedDivId}`, {
       duration: 1,
       color: '#f9f9f9',
     }, 0);
+    
     // Update the currently clicked div ID
     currentClickedDivId = clickedDivId;
     return timeline;
   }
+  
   // Event listeners for each clickable block
-  document.getElementById('about').addEventListener('click', function () {
+  document.getElementById('about').addEventListener('click', function (e) {
+    e.preventDefault();
+    console.log('🎯 Navegando a About');
     animatePageTransition('100vw', 'about');
+    // Actualizar URL sin recargar la página
+    window.history.pushState({}, '', '/?block=about');
   });
-  document.getElementById('home').addEventListener('click', function () {
-    animatePageTransition('-0vw', 'home');
+  
+  document.getElementById('home').addEventListener('click', function (e) {
+    e.preventDefault();
+    console.log('🎯 Navegando a Home');
+    animatePageTransition('0vw', 'home');
+    // Actualizar URL sin recargar la página
+    window.history.pushState({}, '', '/');
+  });
+  
+  // Agregar event listener para la tienda
+  document.getElementById('store').addEventListener('click', function (e) {
+    // No prevenir default para permitir navegación normal a store.html
+    console.log('🎯 Navegando a Tienda');
+  });
+  
+  // Agregar event listener para el carrito
+  document.getElementById('cart').addEventListener('click', function (e) {
+    // No prevenir default para permitir navegación normal a cart.html
+    console.log('🎯 Navegando a Carrito');
   });
 
   // Retrieve the animation position from URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const clickedBlock = urlParams.get('block');
+  
   // Set the animation position based on the clicked block
   switch (clickedBlock) {
     case 'about':
+      console.log('📍 Inicializando en About');
       animatePageTransition('100vw', 'about');
       break;
     case 'home':
-      animatePageTransition('-0vw', 'home');
+      console.log('📍 Inicializando en Home');
+      animatePageTransition('0vw', 'home');
       break;
-
     default:
       // Default animation position if no or unknown block is specified
-      animatePageTransition('0vw');
+      console.log('📍 Inicializando en posición por defecto');
+      animatePageTransition('0vw', 'home');
       break;
   }
+  
+  // Agregar soporte para navegación con el botón atrás del navegador
+  window.addEventListener('popstate', function(event) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const clickedBlock = urlParams.get('block');
+    
+    switch (clickedBlock) {
+      case 'about':
+        animatePageTransition('100vw', 'about');
+        break;
+      default:
+        animatePageTransition('0vw', 'home');
+        break;
+    }
+  });
 });
 </script>
 </body>
