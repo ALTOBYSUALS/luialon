@@ -61,8 +61,8 @@
   flex-direction: column;
   gap: 10px;
   width: 80px;
-}
-
+  }
+  
 .thumbnail-item {
   width: 80px;
   height: 80px;

@@ -563,8 +563,8 @@
   opacity: 0.5;
   transition: all 0.3s ease;
   z-index: 1;
-}
-
+  }
+  
 .product-card:hover::before {
   opacity: 1;
   box-shadow: 
@@ -670,7 +670,7 @@
 /* Ocultar específicamente elementos con texto GALLERY */
 .wrp_store *:contains("GALLERY") {
   display: none !important;
-}
+  }
 
 /* Permitir que el navbar neumórfico se aplique correctamente */
 .wrp_store .div__nav #gallery {
