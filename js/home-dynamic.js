@@ -1,53 +1,45 @@
-// 🎨 SISTEMA DINÁMICO PARA PÁGINA PRINCIPAL CON CLOUDFLARE R2 🎨
-// Sistema que reemplaza imágenes del showcase con contenido aleatorio de Cloudflare
+// 🎨 SISTEMA DINÁMICO PARA PÁGINA PRINCIPAL CON IMÁGENES DE LA TIENDA 🎨
+// Sistema que reemplaza imágenes del showcase con las mismas de la tienda
 
 console.log('✅ home-dynamic.js cargado correctamente');
 
-// 🌟 CONFIGURACIÓN CLOUDFLARE R2
-const CLOUDFLARE_CONFIG = {
-  baseUrl: 'https://pub-acb752a1176b4e8d82e52d357e330c9f.r2.dev',
-  inventoryFile: '/cloudflare-fruits-inventory.json'
-};
-
 // 🎯 VARIABLES GLOBALES
-let cloudflareImages = [];
+let storeProducts = [];
 let selectedImages = [];
 
 // 🔄 FUNCIÓN PRINCIPAL DE INICIALIZACIÓN
 async function initializeCloudflareShowcase() {
   try {
-    console.log('📦 Cargando inventario de Cloudflare R2...');
-    console.log('📍 Ruta del archivo:', CLOUDFLARE_CONFIG.inventoryFile);
+    console.log('📦 Cargando productos de la tienda...');
     
-    // Cargar inventario
-    const response = await fetch(CLOUDFLARE_CONFIG.inventoryFile);
-    console.log('📡 Response status:', response.status);
-    console.log('📡 Response ok:', response.ok);
-    
-    if (!response.ok) {
-      throw new Error(`Error HTTP: ${response.status}`);
+    // Verificar si los productos ya están disponibles globalmente
+    if (typeof products !== 'undefined') {
+      storeProducts = products;
+      console.log(`🛒 Productos cargados desde variable global: ${storeProducts.length}`);
+    } else {
+      // Cargar store.js dinámicamente si no está disponible
+      console.log('📥 Cargando store.js dinámicamente...');
+      await loadStoreScript();
     }
     
-    const inventory = await response.json();
-    console.log('📊 Inventario cargado:', inventory);
-    
-    // Combinar todas las imágenes disponibles
-    const kopfeImages = inventory.baskets.kopfe.fruits || [];
-    const wesenImages = inventory.baskets.wesen.fruits || [];
-    cloudflareImages = [...kopfeImages, ...wesenImages];
-    
-    console.log(`🖼️ Total de imágenes disponibles: ${cloudflareImages.length}`);
-    console.log('- Köpfe (retratos):', kopfeImages.length);
-    console.log('- Wesen (seres):', wesenImages.length);
-    
-    if (cloudflareImages.length === 0) {
-      console.warn('⚠️ No se encontraron imágenes en el inventario');
+    if (storeProducts.length === 0) {
+      console.warn('⚠️ No se encontraron productos de la tienda');
       return;
     }
     
-    // Seleccionar 18 imágenes aleatorias (6 para cada versión: desktop, tablet, mobile)
-    selectedImages = selectRandomImages(cloudflareImages, 18);
-    console.log('🎲 Imágenes seleccionadas:', selectedImages.map(img => img.name));
+    console.log(`🖼️ Total de productos disponibles: ${storeProducts.length}`);
+    
+    // Mostrar algunos productos de ejemplo
+    const sampleProducts = storeProducts.slice(0, 5);
+    console.log('📸 Productos de ejemplo:', sampleProducts.map(p => ({
+      id: p.id,
+      title: p.title,
+      imageUrl: p.imageUrl
+    })));
+    
+    // Seleccionar 18 imágenes aleatorias de los productos
+    selectedImages = selectRandomProducts(storeProducts, 18);
+    console.log('🎲 Productos seleccionados:', selectedImages.map(p => p.title));
     
     // Reemplazar imágenes en el DOM
     await replaceShowcaseImages();
@@ -55,28 +47,66 @@ async function initializeCloudflareShowcase() {
     // Configurar navegación
     setupImageNavigation();
     
-    console.log('✅ Sistema de showcase con Cloudflare R2 inicializado correctamente');
+    console.log('✅ Sistema de showcase con productos de la tienda inicializado correctamente');
     
   } catch (error) {
-    console.error('❌ Error al inicializar el showcase de Cloudflare:', error);
+    console.error('❌ Error al inicializar el showcase:', error);
     console.log('🔄 Manteniendo imágenes locales como fallback');
   }
 }
 
-// 🎲 FUNCIÓN PARA SELECCIONAR IMÁGENES ALEATORIAS
-function selectRandomImages(images, count) {
-  const shuffled = [...images].sort(() => 0.5 - Math.random());
+// 📥 FUNCIÓN PARA CARGAR STORE.JS DINÁMICAMENTE
+async function loadStoreScript() {
+  return new Promise((resolve, reject) => {
+    // Verificar si ya existe el script
+    if (document.querySelector('script[src*="store.js"]')) {
+      // Si ya existe, esperar un poco para que se cargue
+      setTimeout(() => {
+        if (typeof products !== 'undefined') {
+          storeProducts = products;
+          resolve();
+        } else {
+          reject(new Error('Products no disponible después de cargar store.js'));
+        }
+      }, 100);
+      return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = 'js/store.js';
+    script.onload = () => {
+      // Esperar un poco para que las variables se inicialicen
+      setTimeout(() => {
+        if (typeof products !== 'undefined') {
+          storeProducts = products;
+          console.log(`📦 Store.js cargado dinámicamente: ${storeProducts.length} productos`);
+          resolve();
+        } else {
+          reject(new Error('Products no disponible después de cargar store.js'));
+        }
+      }, 100);
+    };
+    script.onerror = () => {
+      reject(new Error('Error cargando store.js'));
+    };
+    document.head.appendChild(script);
+  });
+}
+
+// 🎲 FUNCIÓN PARA SELECCIONAR PRODUCTOS ALEATORIOS
+function selectRandomProducts(products, count) {
+  const shuffled = [...products].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 }
 
 // 🖼️ FUNCIÓN PARA REEMPLAZAR IMÁGENES EN EL DOM
 async function replaceShowcaseImages() {
-  console.log('🔄 Reemplazando imágenes del showcase...');
-  console.log('📊 Imágenes seleccionadas disponibles:', selectedImages.length);
+  console.log('🔄 Reemplazando imágenes del showcase con productos de la tienda...');
+  console.log('📊 Productos seleccionados disponibles:', selectedImages.length);
   
-  // Verificar que tenemos imágenes seleccionadas
+  // Verificar que tenemos productos seleccionados
   if (selectedImages.length === 0) {
-    console.error('❌ No hay imágenes seleccionadas para reemplazar');
+    console.error('❌ No hay productos seleccionados para reemplazar');
     return;
   }
   
@@ -119,32 +149,28 @@ async function replaceShowcaseImages() {
       continue;
     }
     
-    if (selectedImages.length === 0) {
-      console.warn(`⚠️ No hay imágenes seleccionadas disponibles`);
-      continue;
-    }
+    // Calcular qué producto usar (ciclar entre los productos seleccionados)
+    const productIndex = i % selectedImages.length;
+    const product = selectedImages[productIndex];
     
-    // Calcular qué imagen usar (ciclar entre las imágenes seleccionadas)
-    const imageIndex = i % selectedImages.length;
-    const cloudflareImage = selectedImages[imageIndex];
-    
-    console.log(`🖼️ Preparando imagen ${i}: ${selector} -> ${cloudflareImage.name}`);
+    console.log(`🖼️ Preparando imagen ${i}: ${selector} -> ${product.title}`);
     
     // Precargar la imagen
     const img = new Image();
     img.onload = () => {
       // Reemplazar src y srcset
-      imageElement.src = cloudflareImage.url;
-      imageElement.srcset = cloudflareImage.url;
+      imageElement.src = product.imageUrl;
+      imageElement.srcset = product.imageUrl;
       
       // Actualizar alt text
-      imageElement.alt = `Obra de arte digital: ${cloudflareImage.name}`;
+      imageElement.alt = `${product.title} - ${product.collection}`;
       
       // Agregar atributos de datos para navegación
       imageElement.dataset.cloudflareImage = 'true';
-      imageElement.dataset.imageUrl = cloudflareImage.url;
-      imageElement.dataset.imageName = cloudflareImage.name;
-      imageElement.dataset.imageType = cloudflareImage.classification;
+      imageElement.dataset.imageUrl = product.imageUrl;
+      imageElement.dataset.imageName = product.title;
+      imageElement.dataset.imageType = product.tags[0]; // primer tag
+      imageElement.dataset.productId = product.id;
       
       // Añadir efecto de fade-in
       imageElement.style.opacity = '0';
@@ -153,16 +179,16 @@ async function replaceShowcaseImages() {
         imageElement.style.opacity = '1';
       }, 100);
       
-      console.log(`✅ Imagen reemplazada: ${selector} -> ${cloudflareImage.name}`);
-      console.log(`   🔗 URL: ${cloudflareImage.url}`);
+      console.log(`✅ Imagen reemplazada: ${selector} -> ${product.title}`);
+      console.log(`   🔗 URL: ${product.imageUrl}`);
       console.log(`   📐 Elemento visible: ${imageElement.offsetWidth}x${imageElement.offsetHeight}`);
     };
     
     img.onerror = (error) => {
-      console.error(`❌ Error al cargar imagen: ${cloudflareImage.url}`, error);
+      console.error(`❌ Error al cargar imagen: ${product.imageUrl}`, error);
     };
     
-    img.src = cloudflareImage.url;
+    img.src = product.imageUrl;
   }
 }
 
@@ -184,19 +210,22 @@ function setupImageNavigation() {
     newImg.addEventListener('click', (e) => {
       e.preventDefault();
       
-      const imageType = newImg.dataset.imageType;
+      const productId = newImg.dataset.productId;
       const imageName = newImg.dataset.imageName;
+      const imageType = newImg.dataset.imageType;
       
-      console.log(`🎯 Click en imagen: ${imageName} (${imageType})`);
+      console.log(`🎯 Click en imagen: ${imageName} (${imageType}) - Producto ID: ${productId}`);
       
-      // Navegar a la galería correspondiente
-      if (imageType === 'kopfe') {
+      // Navegar a la tienda o a los detalles del producto
+      if (productId) {
+        window.location.href = `product-details.html?id=${productId}`;
+      } else if (imageType === 'köpfe' || imageType === 'kopfe') {
         window.location.href = 'de/gallery-kopfe.html';
       } else if (imageType === 'wesen') {
         window.location.href = 'de/gallery-wesen.html';
       } else {
-        // Fallback a galería general
-        window.location.href = 'de/gallery-wesen.html';
+        // Fallback a la tienda
+        window.location.href = 'store.html';
       }
     });
     
@@ -217,30 +246,34 @@ function setupImageNavigation() {
 // 🚀 FUNCIÓN DE DEBUG PARA VERIFICAR EL ESTADO
 function debugShowcaseState() {
   console.log('🔍 ESTADO DEL SHOWCASE:');
-  console.log('- Imágenes de Cloudflare cargadas:', cloudflareImages.length);
-  console.log('- Imágenes seleccionadas:', selectedImages.length);
+  console.log('- Productos de la tienda cargados:', storeProducts.length);
+  console.log('- Productos seleccionados:', selectedImages.length);
   console.log('- Elementos del showcase encontrados:', document.querySelectorAll('[class*="img__showcase"]').length);
   
   // Mostrar información de cada imagen
   document.querySelectorAll('[class*="img__showcase"]').forEach((img, index) => {
-    const isCloudflare = img.dataset.cloudflareImage === 'true';
-    console.log(`  ${index + 1}. ${img.className}: ${isCloudflare ? '✅ Cloudflare' : '❌ Local'} - ${img.src}`);
+    const isFromStore = img.dataset.cloudflareImage === 'true';
+    const productId = img.dataset.productId;
+    console.log(`  ${index + 1}. ${img.className}: ${isFromStore ? '✅ Tienda' : '❌ Local'} - Producto ${productId} - ${img.src}`);
   });
 }
 
 // 🎬 INICIALIZACIÓN AUTOMÁTICA
 // Ejecutar cuando el DOM esté listo
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeCloudflareShowcase);
+  document.addEventListener('DOMContentLoaded', () => {
+    // Esperar un poco más para asegurar que store.js se cargue
+    setTimeout(initializeCloudflareShowcase, 1000);
+  });
 } else {
   // El DOM ya está listo
-  initializeCloudflareShowcase();
+  setTimeout(initializeCloudflareShowcase, 1000);
 }
 
 // También ejecutar cuando la página esté completamente cargada
 window.addEventListener('load', () => {
   console.log('🌐 Página completamente cargada, verificando estado del showcase...');
-  setTimeout(debugShowcaseState, 1000);
+  setTimeout(debugShowcaseState, 2000);
 });
 
 // Función global para debug (disponible en la consola)
