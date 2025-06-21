@@ -60,3 +60,4 @@ harvest-*.js
 clean-*.js
 cloudflare-*.json
 PUERTO 
+.vercel
