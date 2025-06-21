@@ -1679,3 +1679,113 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // También ejecutar cuando la página esté completamente cargada
 window.addEventListener('load', removeGalleryElements);
+
+// 🎨 SISTEMA DINÁMICO PARA FOOTER DE LA TIENDA 🎨
+// Reemplaza las imágenes del footer con productos aleatorios de la tienda
+
+function replaceFooterImagesWithStoreProducts() {
+  console.log('🎨 Iniciando reemplazo de imágenes del footer con productos de la tienda...');
+  
+  // Verificar si los productos están disponibles
+  if (!products || products.length === 0) {
+    console.warn('⚠️ Productos no disponibles para el footer, reintentando en 500ms...');
+    setTimeout(replaceFooterImagesWithStoreProducts, 500);
+    return;
+  }
+  
+  console.log(`🛒 Productos disponibles para footer: ${products.length}`);
+  
+  // Seleccionar 6 productos aleatorios para el footer
+  const shuffledProducts = [...products].sort(() => 0.5 - Math.random());
+  const selectedProducts = shuffledProducts.slice(0, 6);
+  
+  console.log('🎲 Productos seleccionados para footer:', selectedProducts.map(p => p.title));
+  
+  // Seleccionar todas las imágenes del footer
+  const footerImages = document.querySelectorAll('.footer-gallery .gallery-item img');
+  
+  if (footerImages.length === 0) {
+    console.warn('⚠️ No se encontraron imágenes del footer');
+    return;
+  }
+  
+  console.log(`🖼️ Imágenes del footer encontradas: ${footerImages.length}`);
+  
+  // Reemplazar cada imagen del footer
+  footerImages.forEach((img, index) => {
+    // Usar producto cíclico si hay menos productos que imágenes
+    const productIndex = index % selectedProducts.length;
+    const product = selectedProducts[productIndex];
+    
+    console.log(`🔄 Reemplazando imagen ${index + 1} del footer con ${product.title}`);
+    
+    // Reemplazar inmediatamente
+    img.src = product.imageUrl;
+    img.srcset = product.imageUrl;
+    img.alt = `${product.title} - ${product.collection}`;
+    
+    // Agregar datos para navegación
+    img.dataset.productId = product.id;
+    img.dataset.productTitle = product.title;
+    img.dataset.storeImage = 'true';
+    
+    // Agregar evento de click para ir a detalles del producto
+    img.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log(`🎯 Click en producto del footer: ${product.title} (ID: ${product.id})`);
+      window.location.href = `product-details.html?id=${product.id}`;
+    });
+    
+    // Efectos hover
+    img.addEventListener('mouseenter', () => {
+      img.style.transform = 'scale(1.05)';
+      img.style.transition = 'transform 0.3s ease';
+      img.style.cursor = 'pointer';
+    });
+    
+    img.addEventListener('mouseleave', () => {
+      img.style.transform = 'scale(1)';
+    });
+    
+    console.log(`✅ Imagen ${index + 1} del footer -> ${product.title} (${product.imageUrl})`);
+  });
+  
+  console.log('🎉 Reemplazo de imágenes del footer completado exitosamente!');
+}
+
+// 🚀 INICIALIZACIÓN DEL SISTEMA DE FOOTER
+document.addEventListener('DOMContentLoaded', () => {
+  // Esperar un poco para asegurar que la página esté completamente cargada
+  setTimeout(replaceFooterImagesWithStoreProducts, 1000);
+});
+
+// También ejecutar cuando la página esté completamente cargada
+window.addEventListener('load', () => {
+  setTimeout(replaceFooterImagesWithStoreProducts, 500);
+});
+
+// Función global para debug del footer
+window.debugFooterImages = function() {
+  console.log('\n🔍 === ESTADO DE LAS IMÁGENES DEL FOOTER ===');
+  
+  const footerImages = document.querySelectorAll('.footer-gallery .gallery-item img');
+  console.log(`📊 Total de imágenes del footer: ${footerImages.length}`);
+  
+  footerImages.forEach((img, index) => {
+    const isFromStore = img.dataset.storeImage === 'true';
+    const productId = img.dataset.productId;
+    const isLocal = img.src.includes('images/');
+    const isCloudflare = img.src.includes('pub-acb752a1176b4e8d82e52d357e330c9f.r2.dev');
+    
+    console.log(`  ${index + 1}. Footer Image:`);
+    console.log(`     - Origen: ${isFromStore ? '✅ TIENDA' : '❌ LOCAL'}`);
+    console.log(`     - Producto ID: ${productId || 'N/A'}`);
+    console.log(`     - URL: ${isLocal ? '❌ LOCAL' : isCloudflare ? '✅ CLOUDFLARE' : '❓ OTRO'}`);
+    console.log(`     - Src: ${img.src.substring(0, 80)}...`);
+  });
+  
+  console.log('\n📦 Productos disponibles:', products ? products.length : 'NO DISPONIBLES');
+};
+
+console.log('🎯 Sistema de footer dinámico configurado');
+console.log('💡 Función disponible en consola: window.debugFooterImages()');
