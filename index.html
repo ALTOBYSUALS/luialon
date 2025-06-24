@@ -105,18 +105,6 @@ body {
           <div class="div__home_t"><img class="img__showcase_1_t" src="images/Wesen-N.36_1Wesen-N.36.webp" width="250" height="224" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 250px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee285" loading="eager"><img class="img__showcase_2_t" src="images/Wesen-N.57_1Wesen-N.57.webp" width="385" height="500" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 385px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee286" loading="eager"><img class="img__showcase_3_t" src="images/Wesen-N.77_1Wesen-N.77.webp" width="255" height="335" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 255px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee287" loading="eager"><img class="img__showcase_4_t" src="images/Wesen-N.K09_1Wesen-N.K09.webp" width="409.5" height="315" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 409.5px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee288" loading="eager"><img class="img__showcase_5_t" src="images/Wesen-N.K19_1Wesen-N.K19.webp" width="323" height="230" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 323px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee289" loading="eager"><img class="img__showcase_6_t" src="images/Wesen-N.K22_1Wesen-N.K22.webp" width="266" height="339" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 266px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee28a" loading="eager"></div>
           <div class="div__home_m"><img class="img__showcase_2_m" src="images/Wesen-N.39_1Wesen-N.39.webp" width="385" height="500" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 385px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee28c" loading="eager"><img class="img__showcase_3_m" src="images/Wesen-N.58_1Wesen-N.58.webp" width="255" height="335" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 255px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee28d" loading="eager"><img class="img__showcase_4_m" src="images/Wesen-N.60_1Wesen-N.60.webp" width="409.5" height="315" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 409.5px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee28e" loading="eager"><img class="img__showcase_5_m" src="images/Wesen-N.67_1Wesen-N.67.webp" width="323" height="230" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 323px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee28f" loading="eager"><img class="img__showcase_6_m" src="images/Wesen-N.96_1Wesen-N.96.webp" width="266" height="339" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 266px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee290" loading="eager"><img class="img__showcase_1_m" src="images/Wesen-N.97_1Wesen-N.97.webp" width="250" height="224" alt="Arte digital Wesen" sizes="(max-width: 479px) 100vw, 250px" data-w-id="14a4e104-fd3c-3f44-a422-0ec7481ee291" loading="eager"></div>
         </div>
-        <div class="div__wrapper_gallery">
-          <div class="div__gallery">
-            <div data-w-id="430cb7f9-cb61-18d7-2ce7-04f70bdadde0" class="div__btn_gallery">
-              <h3 data-w-id="0fc3040d-4c06-de73-91cd-d01bd20cd8a1" class="h3 is--bigger">ARTE DIGITAL</h3>
-              <a href="de/gallery-wesen.html" class="link_block w-inline-block"><img src="images/Frame-1.png" loading="eager" data-w-id="a35a6b79-f012-352e-7c0d-000bf67d821b" sizes="(max-width: 1280px) 100vw, 1280px" alt="" srcset="images/Frame-1-p-500.png 500w, images/Frame-1-p-800.png 800w, images/Frame-1-p-1080.png 1080w, images/Frame-1.png 1280w" class="img__btn_gallery"></a>
-            </div>
-            <div data-w-id="eea4cb3e-c4c5-338a-a755-f2bbd2643388" class="div__btn_gallery">
-              <h3 data-w-id="eea4cb3e-c4c5-338a-a755-f2bbd2643389" class="h3 is--bigger">COLECCION </h3>
-              <a href="de/gallery-kopfe.html" class="link_block w-inline-block"><img src="images/Frame-1_1.png" loading="eager" data-w-id="ffe457f1-d944-4200-3113-3bfe78e5fadd" sizes="(max-width: 1280px) 100vw, 1280px" alt="" srcset="images/Frame-1_1-p-500.png 500w, images/Frame-1_1-p-800.png 800w, images/Frame-1_1-p-1080.png 1080w, images/Frame-1_1.png 1280w" class="img__btn_gallery"></a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="footer-artsy">
@@ -263,11 +251,57 @@ document.addEventListener('DOMContentLoaded', () => {
     return timeline;
   }
   
+  // Function to handle mobile section visibility
+  function handleMobileSections(section) {
+    const isMobile = window.innerWidth <= 479;
+    
+    if (isMobile) {
+      const aboutWrapper = document.querySelector('.div__wrapper_about');
+      const homeWrapper = document.querySelector('.div__wrapper_home');
+      
+      if (section === 'about') {
+        // Show about, hide home
+        aboutWrapper.style.display = 'block';
+        aboutWrapper.style.opacity = '1';
+        aboutWrapper.style.visibility = 'visible';
+        aboutWrapper.style.zIndex = '2';
+        
+        homeWrapper.style.display = 'none';
+        homeWrapper.style.opacity = '0';
+        homeWrapper.style.visibility = 'hidden';
+        homeWrapper.style.zIndex = '1';
+        
+        document.body.setAttribute('data-section', 'about');
+      } else {
+        // Show home, hide about
+        homeWrapper.style.display = 'block';
+        homeWrapper.style.opacity = '1';
+        homeWrapper.style.visibility = 'visible';
+        homeWrapper.style.zIndex = '2';
+        
+        aboutWrapper.style.display = 'none';
+        aboutWrapper.style.opacity = '0';
+        aboutWrapper.style.visibility = 'hidden';
+        aboutWrapper.style.zIndex = '1';
+        
+        document.body.removeAttribute('data-section');
+      }
+    }
+  }
+
   // Event listeners for each clickable block
   document.getElementById('about').addEventListener('click', function (e) {
     e.preventDefault();
     console.log('🎯 Navegando a About');
-    animatePageTransition('100vw', 'about');
+    
+    // Handle mobile sections
+    handleMobileSections('about');
+    
+    // Animate for desktop/tablet
+    if (window.innerWidth > 479) {
+      animatePageTransition('100vw', 'about');
+    }
+    
     // Actualizar URL sin recargar la página
     window.history.pushState({}, '', '/?block=about');
   });
@@ -275,7 +309,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('home').addEventListener('click', function (e) {
     e.preventDefault();
     console.log('🎯 Navegando a Home');
-    animatePageTransition('0vw', 'home');
+    
+    // Handle mobile sections
+    handleMobileSections('home');
+    
+    // Animate for desktop/tablet
+    if (window.innerWidth > 479) {
+      animatePageTransition('0vw', 'home');
+    }
+    
     // Actualizar URL sin recargar la página
     window.history.pushState({}, '', '/');
   });
@@ -292,26 +334,40 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🎯 Navegando a Carrito');
   });
 
-  // Retrieve the animation position from URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const clickedBlock = urlParams.get('block');
-  
-  // Set the animation position based on the clicked block
-  switch (clickedBlock) {
-    case 'about':
-      console.log('📍 Inicializando en About');
-      animatePageTransition('100vw', 'about');
-      break;
-    case 'home':
-      console.log('📍 Inicializando en Home');
-      animatePageTransition('0vw', 'home');
-      break;
-    default:
-      // Default animation position if no or unknown block is specified
-      console.log('📍 Inicializando en posición por defecto');
-      animatePageTransition('0vw', 'home');
-      break;
+  // Initialize section visibility on page load
+  function initializeSections() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const clickedBlock = urlParams.get('block');
+    
+    // Set the animation position based on the clicked block
+    switch (clickedBlock) {
+      case 'about':
+        console.log('📍 Inicializando en About');
+        handleMobileSections('about');
+        if (window.innerWidth > 479) {
+          animatePageTransition('100vw', 'about');
+        }
+        break;
+      case 'home':
+        console.log('📍 Inicializando en Home');
+        handleMobileSections('home');
+        if (window.innerWidth > 479) {
+          animatePageTransition('0vw', 'home');
+        }
+        break;
+      default:
+        // Default animation position if no or unknown block is specified
+        console.log('📍 Inicializando en posición por defecto (Home)');
+        handleMobileSections('home');
+        if (window.innerWidth > 479) {
+          animatePageTransition('0vw', 'home');
+        }
+        break;
+    }
   }
+  
+  // Initialize sections after DOM is ready
+  setTimeout(initializeSections, 100);
   
   // Agregar soporte para navegación con el botón atrás del navegador
   window.addEventListener('popstate', function(event) {
@@ -320,10 +376,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     switch (clickedBlock) {
       case 'about':
-        animatePageTransition('100vw', 'about');
+        handleMobileSections('about');
+        if (window.innerWidth > 479) {
+          animatePageTransition('100vw', 'about');
+        }
         break;
       default:
-        animatePageTransition('0vw', 'home');
+        handleMobileSections('home');
+        if (window.innerWidth > 479) {
+          animatePageTransition('0vw', 'home');
+        }
         break;
     }
   });

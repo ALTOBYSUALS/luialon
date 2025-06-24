@@ -177,7 +177,7 @@ function setupAmazonZoom() {
     
     animationFrame = requestAnimationFrame(() => {
       const rect = container.getBoundingClientRect();
-      
+  
       // Calcular posición del cursor
       let x = e.clientX - rect.left;
       let y = e.clientY - rect.top;
@@ -264,8 +264,8 @@ function changeMainImage(imageUrl, index) {
       } else {
         thumb.classList.remove('active');
       }
-    });
-    
+  });
+  
     // Reconfigurar zoom
     setTimeout(() => {
       setupAmazonZoom();
@@ -485,8 +485,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Funciones de utilidad para responsive
 function isMobile() {
   return window.innerWidth <= 768;
-}
-
+  }
+  
 function handleResize() {
   // Reconfigurar zoom en cambio de tamaño
   if (isZoomActive) {

@@ -1358,27 +1358,27 @@ h1 {
 
 @media screen and (max-width: 479px) {
   .h1 {
-    font-size: 3em;
-    line-height: 46px;
+    margin-top: 8px;
+    font-size: 11.3vw;
   }
 
   .h2 {
-    font-size: 2.5em;
-    line-height: 36px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .h3 {
-    font-size: 16px;
-    line-height: 18px;
-    letter-spacing: 4px;
+    text-align: left;
+    margin-bottom: 0;
+    font-size: 14px;
   }
 
   .h3.is--bold {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .h3.is--white {
-    line-height: 16px;
+    justify-content: flex-start;
   }
 
   .h3.is--narrow {
@@ -1387,12 +1387,12 @@ h1 {
 
   .p1 {
     font-size: 14px;
-    line-height: 18px;
+    line-height: 20px;
   }
 
   .p1.is--centered {
     font-size: 14px;
-    line-height: 16px;
+    line-height: 18px;
   }
 
   .p1.is--right {
@@ -1402,429 +1402,421 @@ h1 {
   .p1.is--right.is--white {
     padding-top: 0;
     padding-bottom: 0;
-    line-height: 16px;
+    line-height: 18px;
   }
 
   .p1.is--about {
-    display: block;
+    text-indent: -1px;
   }
 
   .div__logo-nav-lang {
-    width: 100%;
-    padding: 0 15px;
+    flex-direction: column;
+    width: 91vw;
   }
 
   .div__logo {
-    padding-top: 30px;
+    padding-top: 0;
   }
 
   .div__nav {
-    margin-top: 2em;
-    flex-wrap: wrap;
+    width: 91vw;
+    margin-top: 8px;
   }
 
   .div__nav_btn {
-    width: auto;
-    min-width: 100px;
-    height: 32px;
-    padding: 6px 12px;
-    margin: 2px;
-    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+    width: 13em;
+    height: 28px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    display: block;
   }
 
   .div__nav_btn.is--clicked {
-    background-color: #1a1a1a;
-    color: #f9f9f9;
+    height: 26px;
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
 
   .div__main_content {
-    min-height: 100vh;
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
+    background-image: url('../images/Noise--Texture-big.png');
+    background-position: 50%;
+    background-repeat: repeat-y;
+    background-size: 2100px;
+    background-attachment: fixed;
+    min-height: 210vw;
   }
 
   .div__home_pc {
-    display: none;
+    width: 91vw;
+    height: 80vh;
+    margin-top: 2vh;
+    display: block;
   }
 
   .div__footer {
-    padding: 0 15px;
+    margin-top: 0;
   }
 
   .img__showcase_1 {
-    display: none;
+    width: 39.939vw;
+    height: auto;
+    top: 49.58%;
+    left: 22.86%;
   }
 
   .div__logo-nav {
-    width: 100%;
+    width: 91vw;
   }
 
   .div__lang {
-    right: 15px;
-    top: 15px;
-    width: auto;
+    order: -1;
+    align-self: flex-end;
+    margin-top: 16px;
+    padding-top: 0;
   }
 
   .div__wrapper_home {
-    width: 100%;
-    max-width: 100vw;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
+    flex: none;
+    align-self: auto;
+    display: block;
   }
 
   .div__about {
-    flex-direction: column;
-    padding: 20px 15px;
+    justify-content: flex-start;
+    width: 91vw;
+    height: 160vw;
+    margin-top: 3vh;
   }
 
   .div__about_img {
-    width: 100%;
-    margin-bottom: 20px;
+    object-fit: contain;
+    height: 35%;
   }
 
   .div__txt_about {
-    width: 100%;
-    padding: 0;
+    object-fit: fill;
+    width: 91vw;
+    height: 65%;
+    overflow: visible;
   }
 
   .div__wrapper_gallery {
-    padding: 0 15px;
+    display: block;
   }
 
   .div__gallery {
-    flex-direction: column;
-    gap: 20px;
+    width: 91vw;
+    height: 140vw;
+    margin-top: 3vh;
   }
 
   .wrp_gallery_collection {
-    padding: 0 15px;
+    background-image: none;
   }
 
   .div__content_gallery {
-    padding: 0;
+    width: 91vw;
+    margin-top: 3vh;
   }
 
   .div__c_name {
-    font-size: 18px;
+    margin-top: 32px;
   }
 
   .div__c_description {
-    font-size: 14px;
+    margin-top: 8px;
   }
 
   .img__gallery {
-    width: 100%;
+    margin-top: 16px;
   }
 
   .btn__back2top {
-    right: 15px;
-    bottom: 15px;
-    width: 40px;
-    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 
   .img__arrow_up {
-    width: 16px;
+    height: 16px;
   }
 
   .div__kopf_a1, .img__kopf_a1 {
-    width: 18vw;
-    height: 23vw;
+    width: 17.6vw;
+    height: 22.9vw;
   }
 
   .img__kopf_a2 {
-    width: 18vw;
-    height: 23vw;
-    top: 0vw;
-    left: 19vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    left: 18.5vw;
   }
 
   .grid__abs {
-    width: 100%;
+    width: 91vw;
   }
 
   .div__kopf_a3, .div__kopf_a4, .div__kopf_a5 {
-    width: 18vw;
-    height: 23vw;
+    width: 17.6vw;
+    height: 22.9vw;
   }
 
   .img__kopf_a3 {
-    width: 18vw;
-    height: 23vw;
-    top: 0vw;
-    left: 38vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    left: 37vw;
   }
 
   .div__kopf_a2 {
-    width: 18vw;
-    height: 23vw;
+    width: 17.6vw;
+    height: 22.9vw;
   }
 
   .img__kopf_a4 {
-    width: 18vw;
-    height: 23vw;
-    top: 0vw;
-    left: 57vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    left: 55.5vw;
   }
 
   .img__kopf_a5 {
-    width: 18vw;
-    height: 23vw;
-    top: 0vw;
-    left: 76vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    left: 74vw;
   }
 
   .img__kopf_a6 {
-    width: 18vw;
-    height: 23vw;
-    top: 24vw;
-    left: 0vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 23.9vw;
   }
 
   .div__kopf_a6, .div__kopf_a7, .div__kopf_a8, .div__kopf_a9, .div__kopf_a10, .div__kopf_a11, .div__kopf_a12, .div__kopf_a13, .div__kopf_a14, .div__kopf_a15, .div__kopf_a16, .div__kopf_a17, .div__kopf_a18, .div__kopf_a19, .div__kopf_a20, .div__kopf_a21, .div__kopf_a22, .div__kopf_a23, .div__kopf_a24, .div__kopf_a25, .div__kopf_a26, .div__kopf_a27, .div__kopf_a28, .div__kopf_a29, .div__kopf_a30 {
-    width: 18vw;
-    height: 23vw;
+    width: 17.6vw;
+    height: 22.9vw;
   }
 
   .img__kopf_a7 {
-    width: 18vw;
-    height: 23vw;
-    top: 24vw;
-    left: 19vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 23.9vw;
+    left: 18.5vw;
   }
 
   .img__kopf_a8 {
-    width: 18vw;
-    height: 23vw;
-    top: 24vw;
-    left: 38vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 23.9vw;
+    left: 37vw;
   }
 
   .img__kopf_a9 {
-    width: 18vw;
-    height: 23vw;
-    top: 24vw;
-    left: 57vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 23.9vw;
+    left: 55.5vw;
   }
 
   .img__kopf_a10 {
-    width: 18vw;
-    height: 23vw;
-    top: 24vw;
-    left: 76vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 23.9vw;
+    left: 74vw;
   }
 
   .img__kopf_a11 {
-    width: 18vw;
-    height: 23vw;
-    top: 48vw;
-    left: 0vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 47.9vw;
   }
 
   .img__kopf_a16 {
-    width: 18vw;
-    height: 23vw;
-    top: 48vw;
-    left: 19vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 71.9vw;
   }
 
   .img__kopf_a21 {
-    width: 18vw;
-    height: 23vw;
-    top: 48vw;
-    left: 38vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 96.2vw;
   }
 
   .img__kopf_a26 {
-    width: 18vw;
-    height: 23vw;
-    top: 48vw;
-    left: 57vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 119vw;
   }
 
   .img__kopf_a12 {
-    width: 18vw;
-    height: 23vw;
-    top: 72vw;
-    left: 0vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 47.9vw;
+    left: 18.5vw;
   }
 
   .img__kopf_a13 {
-    width: 18vw;
-    height: 23vw;
-    top: 72vw;
-    left: 19vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 47.9vw;
+    left: 37vw;
   }
 
   .img__kopf_a14 {
-    width: 18vw;
-    height: 23vw;
-    top: 72vw;
-    left: 38vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 47.9vw;
+    left: 55.5vw;
   }
 
   .img__kopf_a15 {
-    width: 18vw;
-    height: 23vw;
-    top: 72vw;
-    left: 57vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 47.9vw;
+    left: 74vw;
   }
 
   .img__kopf_a17 {
-    width: 18vw;
-    height: 23vw;
-    top: 96vw;
-    left: 0vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 71.9vw;
+    left: 18.5vw;
   }
 
   .img__kopf_a18 {
-    width: 18vw;
-    height: 23vw;
-    top: 96vw;
-    left: 19vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 71.9vw;
+    left: 37vw;
   }
 
   .img__kopf_a19 {
-    width: 18vw;
-    height: 23vw;
-    top: 96vw;
-    left: 38vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 71.9vw;
+    left: 55.5vw;
   }
 
   .img__kopf_a20 {
-    width: 18vw;
-    height: 23vw;
-    top: 96vw;
-    left: 57vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 71.9vw;
+    left: 74vw;
   }
 
   .img__kopf_a22 {
-    width: 18vw;
-    height: 23vw;
-    top: 120vw;
-    left: 0vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 96.2vw;
+    left: 18.5vw;
   }
 
   .img__kopf_a23 {
-    width: 18vw;
-    height: 23vw;
-    top: 120vw;
-    left: 19vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 96.2vw;
+    left: 37vw;
   }
 
   .img__kopf_a24 {
-    width: 18vw;
-    height: 23vw;
-    top: 120vw;
-    left: 38vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 96.2vw;
+    left: 55.5vw;
   }
 
   .img__kopf_a25 {
-    width: 18vw;
-    height: 23vw;
-    top: 120vw;
-    left: 57vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 96.2vw;
+    left: 74vw;
   }
 
   .img__kopf_a27 {
-    width: 18vw;
-    height: 23vw;
-    top: 144vw;
-    left: 0vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 119vw;
+    left: 18.5vw;
   }
 
   .img__kopf_a28 {
-    width: 18vw;
-    height: 23vw;
-    top: 144vw;
-    left: 19vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 119vw;
+    left: 37vw;
   }
 
   .img__kopf_a29 {
-    width: 18vw;
-    height: 23vw;
-    top: 144vw;
-    left: 38vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 119vw;
+    left: 55.5vw;
   }
 
   .img__kopf_a30 {
-    width: 18vw;
-    height: 23vw;
-    top: 144vw;
-    left: 57vw;
+    width: 17.6vw;
+    height: 22.9vw;
+    top: 119vw;
+    left: 74vw;
   }
 
   .div__home_m {
     object-fit: fill;
     align-items: flex-start;
-    width: 100vw;
-    max-width: 100vw;
-    height: 120vw;
-    margin: 2vh auto 0;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
+    width: 91vw;
+    height: 130vw;
+    margin-top: 3vh;
+    margin-bottom: 0;
     display: flex;
-    box-sizing: border-box;
   }
 
   .img__showcase_1_m {
-    width: 35%;
+    width: 39.94%;
     height: auto;
-    top: 46%;
-    left: 25%;
-    position: absolute;
+    top: 46.58%;
+    left: 29.86%;
   }
 
   .img__showcase_2_m {
-    width: 55%;
+    width: 61.28%;
     height: auto;
     top: 0%;
-    left: 30%;
-    position: absolute;
+    left: 32.01%;
   }
 
   .img__showcase_3_m {
-    width: 38%;
+    width: 41.46%;
     height: auto;
-    top: 25%;
+    top: 25.12%;
     left: 0%;
-    position: absolute;
   }
 
   .img__showcase_4_m {
-    width: 60%;
+    width: 65.24%;
     height: auto;
-    top: 29%;
-    left: 32%;
-    position: absolute;
+    top: 29.43%;
+    left: 34.76%;
   }
 
   .img__showcase_5_m {
-    width: 50%;
+    width: 55.79%;
     height: auto;
-    top: 61%;
-    left: 35%;
-    position: absolute;
+    top: 61.73%;
+    left: 37.5%;
   }
 
   .img__showcase_6_m {
-    width: 45%;
+    width: 48.48%;
     height: auto;
-    top: 60%;
-    left: 10%;
-    position: absolute;
+    top: 60.22%;
+    left: 11.49%;
   }
 
   .div__home_t {
-    width: 100vw;
-    max-width: 100vw;
+    width: 91vw;
     height: 80vh;
     margin-top: 2vh;
     display: none;
-    overflow: hidden;
   }
 
   .link_block {
@@ -1847,11 +1839,10 @@ h1 {
   }
 
   .img__showcase_1_t {
-    width: 35vw;
+    width: 39.939vw;
     height: auto;
-    top: 49%;
-    left: 20%;
-    position: absolute;
+    top: 49.58%;
+    left: 22.86%;
   }
 
   .icon_fullscreen {
@@ -1884,24 +1875,6 @@ h1 {
 
   .p1_s.is--about {
     text-indent: -1px;
-  }
-
-  .div__wrappers {
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
-  }
-
-  body {
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
-  }
-
-  html {
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
   }
 }
 

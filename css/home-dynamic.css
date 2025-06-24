@@ -1,17 +1,6 @@
 /* 🎨 SISTEMA DINÁMICO PARA PÁGINA PRINCIPAL 🎨 */
 /* Versión simplificada temporal para diagnóstico */
 
-/* MOBILE RESPONSIVE FIXES - CRITICAL */
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
-}
-
 /* Efectos hover básicos para showcase */
 .img__showcase_1,
 .img__showcase_2,
@@ -21,8 +10,6 @@ html, body {
 .img__showcase_6 {
   cursor: pointer;
   transition: transform 0.3s ease;
-  max-width: 100%;
-  height: auto;
 }
 
 .img__showcase_1:hover,
@@ -49,8 +36,6 @@ html, body {
 .img__showcase_6_m {
   cursor: pointer;
   transition: transform 0.3s ease;
-  max-width: 100%;
-  height: auto;
 }
 
 .img__showcase_1_t:hover,
@@ -402,19 +387,22 @@ html, body {
     flex-direction: column;
     width: 95%;
     height: 90vh;
+    overflow-y: auto;
   }
   
   .product-image-container {
-    height: 50%;
+    height: 300px;
   }
   
   .zoom-result {
-    display: none; /* Hide zoom on mobile */
+    width: 150px;
+    height: 150px;
+    top: 10px;
+    right: 10px;
   }
   
   .product-info-modal {
     padding: 2em;
-    height: 50%;
   }
   
   .product-details-grid {
@@ -422,54 +410,11 @@ html, body {
   }
   
   .related-products-scroll {
-    padding: 0 1em;
+    padding: 1em;
+    gap: 0.5em;
   }
   
   .related-product-item {
-    min-width: 120px;
-  }
-  
-  /* CRITICAL MOBILE FIXES */
-  .div__wrapper_home {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-    width: 100% !important;
-  }
-  
-  .div__home_m {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-    width: 100vw !important;
-    position: relative !important;
-  }
-  
-  .div__home_m img {
-    max-width: none !important; /* Allow images to be sized by percentage */
-  }
-  
-  /* Ensure all showcase images stay within bounds */
-  .img__showcase_1_m,
-  .img__showcase_2_m,
-  .img__showcase_3_m,
-  .img__showcase_4_m,
-  .img__showcase_5_m,
-  .img__showcase_6_m {
-    max-width: 60% !important; /* Prevent any image from being too wide */
-  }
-  
-  /* Specific adjustments for problematic images */
-  .img__showcase_2_m {
-    max-width: 55% !important;
-    left: 30% !important;
-  }
-  
-  .img__showcase_4_m {
-    max-width: 60% !important;
-    left: 32% !important;
-  }
-  
-  .img__showcase_5_m {
-    max-width: 50% !important;
-    left: 35% !important;
+    min-width: 150px;
   }
 } 
